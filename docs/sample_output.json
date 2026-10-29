@@ -1,0 +1,45 @@
+{
+  "algorithm": "recursive",
+  "disks": 3,
+  "moves": [
+    {
+      "disk": 1,
+      "from": 0,
+      "to": 2
+    },
+    {
+      "disk": 2,
+      "from": 0,
+      "to": 1
+    },
+    {
+      "disk": 1,
+      "from": 2,
+      "to": 1
+    },
+    {
+      "disk": 3,
+      "from": 0,
+      "to": 2
+    },
+    {
+      "disk": 1,
+      "from": 1,
+      "to": 0
+    },
+    {
+      "disk": 2,
+      "from": 1,
+      "to": 2
+    },
+    {
+      "disk": 1,
+      "from": 0,
+      "to": 2
+    }
+  ],
+  "total_moves": 7,
+  "min_moves": 7,
+  "is_minimum": true,
+  "execution_time_ms": 0.0038
+}

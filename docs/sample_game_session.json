@@ -1,0 +1,159 @@
+[
+  {
+    "step": "1. Start a new game with 3 disks",
+    "response": {
+      "game_id": "ae7e1c6b6253",
+      "disks": 3,
+      "pegs": [
+        [
+          3,
+          2,
+          1
+        ],
+        [],
+        []
+      ],
+      "moves": 0,
+      "min_moves": 7,
+      "moves_remaining": 7,
+      "hints_used": 0,
+      "undos": 0,
+      "mistakes": 0,
+      "solved": false,
+      "assisted": false,
+      "stars": null,
+      "elapsed_s": 0.0,
+      "can_undo": false,
+      "history": []
+    }
+  },
+  {
+    "step": "2. Move disk 1 from A to C",
+    "response": {
+      "move": {
+        "disk": 1,
+        "from": 0,
+        "to": 2
+      },
+      "game": {
+        "game_id": "ae7e1c6b6253",
+        "disks": 3,
+        "pegs": [
+          [
+            3,
+            2
+          ],
+          [],
+          [
+            1
+          ]
+        ],
+        "moves": 1,
+        "min_moves": 7,
+        "moves_remaining": 6,
+        "hints_used": 0,
+        "undos": 0,
+        "mistakes": 0,
+        "solved": false,
+        "assisted": false,
+        "stars": null,
+        "elapsed_s": 0.0,
+        "can_undo": true,
+        "history": [
+          {
+            "disk": 1,
+            "from": 0,
+            "to": 2
+          }
+        ]
+      }
+    }
+  },
+  {
+    "step": "3. Illegal move: disk 2 onto the smaller disk 1 (refused, HTTP 422)",
+    "response": {
+      "error": "Not allowed! Disk 2 is bigger than disk 1, so it cannot sit on top of it.",
+      "status": 422
+    }
+  },
+  {
+    "step": "4. Ask for a hint",
+    "response": {
+      "hint": {
+        "disk": 2,
+        "from": 0,
+        "to": 1,
+        "from_name": "A",
+        "to_name": "B",
+        "message": "Move disk 2 from rod A to rod B. This clears the way so disk 3 (the biggest disk not on rod C yet) can reach rod C."
+      },
+      "game": {
+        "game_id": "ae7e1c6b6253",
+        "disks": 3,
+        "pegs": [
+          [
+            3,
+            2
+          ],
+          [],
+          [
+            1
+          ]
+        ],
+        "moves": 1,
+        "min_moves": 7,
+        "moves_remaining": 6,
+        "hints_used": 1,
+        "undos": 0,
+        "mistakes": 1,
+        "solved": false,
+        "assisted": false,
+        "stars": null,
+        "elapsed_s": 0.0,
+        "can_undo": true,
+        "history": [
+          {
+            "disk": 1,
+            "from": 0,
+            "to": 2
+          }
+        ]
+      }
+    }
+  },
+  {
+    "step": "5. Undo the last move",
+    "response": {
+      "undone": {
+        "disk": 1,
+        "from": 0,
+        "to": 2
+      },
+      "game": {
+        "game_id": "ae7e1c6b6253",
+        "disks": 3,
+        "pegs": [
+          [
+            3,
+            2,
+            1
+          ],
+          [],
+          []
+        ],
+        "moves": 1,
+        "min_moves": 7,
+        "moves_remaining": 7,
+        "hints_used": 1,
+        "undos": 1,
+        "mistakes": 1,
+        "solved": false,
+        "assisted": false,
+        "stars": null,
+        "elapsed_s": 0.0,
+        "can_undo": false,
+        "history": []
+      }
+    }
+  }
+]

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tower of Hanoi Robot Arm Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1> Tower of Hanoi: Robot Arm Game</h1>
+    <p>Move every disk from rod <b>A</b> to rod <b>C</b>. Click a rod to pick up its top disk, then click where it should go.
+       Never put a big disk on a small one! Stuck? Press <b>💡 Hint</b>.</p>
+  </header>
+
+  <!-- Messages show up here (blue = info, green = success, red = error, amber = hint) -->
+  <div id="banner" class="banner info" role="status">Starting a game…</div>
+
+  <main>
+    <!-- LEFT: controls + the robot stage -->
+    <section class="left">
+      <div class="panel controls">
+        <label>Disks
+          <select id="disks">
+            <option>2</option><option selected>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+          </select>
+        </label>
+
+        <div class="buttons">
+          <button id="newBtn" class="primary">🎮 New game</button>
+          <button id="hintBtn" class="hint">💡 Hint</button>
+          <button id="undoBtn">↶ Undo</button>
+          <button id="restartBtn">↺ Restart</button>
+          <button id="solveBtn">🤖 Robot solves it</button>
+        </div>
+
+        <label class="speed">Arm speed <output id="speedLabel">2x</output>
+          <input id="speed" type="range" min="0.5" max="20" step="0.5" value="2" />
+        </label>
+      </div>
+
+      <div class="panel stage">
+        <canvas id="stage" width="900" height="440" aria-label="Robot arm playing Tower of Hanoi"></canvas>
+        <div class="rodbtns" role="group" aria-label="Choose a rod">
+          <button data-rod="0">Rod A <kbd>1</kbd></button>
+          <button data-rod="1">Rod B <kbd>2</kbd></button>
+          <button data-rod="2">Rod C <kbd>3</kbd></button>
+        </div>
+        <div id="hintBox" class="hintbox" hidden></div>
+      </div>
+    </section>
+
+    <!-- RIGHT: numbers + history -->
+    <aside class="right">
+      <div class="panel stats">
+        <div class="stat"><span>Moves made</span><b id="statMoves">0</b></div>
+        <div class="stat"><span>Best possible (2ⁿ − 1)</span><b id="statMin">7</b></div>
+        <div class="stat"><span>Moves still needed</span><b id="statLeft">7</b></div>
+        <div class="stat"><span>Hints used</span><b id="statHints">0</b></div>
+        <div class="stat"><span>Mistakes</span><b id="statMistakes">0</b></div>
+        <div class="stat"><span>Time</span><b id="statTime">0.0 s</b></div>
+        <div class="stat wide"><span>Status</span><b id="statStatus">Ready</b></div>
+      </div>
+
+      <div class="panel history">
+        <h2>Move history</h2>
+        <ol id="history"></ol>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Algorithm lab (the earlier project part, still here) -->
+  <details class="panel compare">
+    <summary>⚖️ Algorithm lab: recursive vs iterative</summary>
+    <p class="hint-text">Make the backend race both solving algorithms. Times are in milliseconds (smaller is faster).</p>
+    <div class="compare-controls">
+      <button id="compareBtn" class="primary">Compare with the chosen number of disks</button>
+      <button id="chartBtn">Draw speed chart (1–14 disks)</button>
+    </div>
+    <div id="compareResult"></div>
+    <canvas id="chart" width="900" height="320" hidden></canvas>
+  </details>
+
+  <footer>Keys: <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> pick a rod · <kbd>H</kbd> hint · <kbd>U</kbd> undo.
+    3 stars = fewest possible moves and no hints.</footer>
+
+  <!-- Shown when you win -->
+  <div id="winOverlay" class="overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+      <h2 id="winTitle">🎉 You solved it!</h2>
+      <div id="winStars" class="stars" aria-label="stars"></div>
+      <p id="winText"></p>
+      <div class="buttons center">
+        <button id="againBtn" class="primary">Play again</button>
+        <button id="nextBtn">Next level ➜</button>
+        <button id="closeBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
